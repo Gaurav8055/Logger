@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="spring-boot-kafka-log" packages="com.example.demo">
+
+    <!-- Define various appenders -->
+    <Appenders>
+       
+
+        <!-- Console appender configuration for logging to standard output -->
+        <Console name="stdout" target="SYSTEM_OUT">
+            <!-- PatternLayout for console output -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n" />
+        </Console>
+
+        <!-- File appender configuration -->
+        <File name="File" fileName="logs/application.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n" />
+        </File>
+    </Appenders>
+    
+    <!-- Define loggers -->
+    <Loggers>
+        <!-- Root logger configuration -->
+        <Root level="INFO">
+            <!-- Appender references for root logger -->
+            <AppenderRef ref="Kafka" />
+            <AppenderRef ref="stdout" />
+            <!-- Add file appender to root logger -->
+            <AppenderRef ref="File" />
+        </Root>
+        
+        <!-- Logger configuration for the 'com.example.demo' package -->
+        <Logger name="com.example.demo" level="DEBUG" />
+        
+        <!-- Logger configuration for the 'org.apache.kafka' package -->
+        <Logger name="org.apache.kafka" level="ERROR" />
+        
+        <!-- Logger configuration for the 'com.novatrack' package -->
+        <!-- This logger is not relevant for this controller class -->
+    </Loggers>
+</Configuration>
