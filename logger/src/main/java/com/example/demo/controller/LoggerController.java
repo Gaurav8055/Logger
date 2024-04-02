@@ -14,7 +14,7 @@ public class LoggerController {
 
 	static final Logger LOGGER = LoggerFactory.getLogger(LoggerController.class);
 
-	@GetMapping("/hi")
+	@GetMapping("/hii")
 	public JsonNode printLoggers() {
 
 		JsonNode responseMsg = null;
